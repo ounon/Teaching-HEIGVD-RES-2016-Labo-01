@@ -1,5 +1,6 @@
 package ch.heigvd.res.lab01.impl;
 
+
 import java.util.logging.Logger;
 
 /**
@@ -20,7 +21,30 @@ public class Utils {
    * contain any line separator, then the first element is an empty string.
    */
   public static String[] getNextLine(String lines) {
-    throw new UnsupportedOperationException("The student has not implemented this method yet.");
+    
+    // delimiters array
+    String[] delimiters = {"\n", "\r", "\r\n"}; 
+    
+    // Array to save result 
+    // we initialize at null
+    String[] stringTab = {null,null};
+    
+    for (String delimiter : delimiters) {
+      int pos = lines.indexOf(delimiter);
+      if (pos != -1){
+          // save the substring before the first delimiter found in the column 0
+          stringTab[0] = lines.substring(0, pos + delimiter.length());
+          // save the last substring in the column 1
+          stringTab[1] = lines.substring(pos + delimiter.length());
+          return stringTab;
+      }
+    }
+    
+    // if there is not delimiters in the line
+    stringTab[0] = "";
+    stringTab[1] = lines;
+    return stringTab;
+          
   }
 
 }
