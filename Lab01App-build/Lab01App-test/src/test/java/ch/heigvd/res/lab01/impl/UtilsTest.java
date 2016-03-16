@@ -27,11 +27,9 @@ public class UtilsTest {
   public void itShouldBePossibleToGetANewLineOnMacOS9() {
     String lines = "hello\rworld\r";
     String[] r1 = Utils.getNextLine(lines);
-    //String[] e1 = {"hello", "world"};
     String[] e1 = {"hello\r", "world\r"};
     assertArrayEquals(e1, r1);
     String[] r2 = Utils.getNextLine(r1[1]);
-    //String[] e2 = {"world", ""};
     String[] e2 = {"world\r", ""};
     assertArrayEquals(e2, r2);
   }
